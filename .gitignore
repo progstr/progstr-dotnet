@@ -1,0 +1,12 @@
+bin
+obj
+*.suo
+*csproj.user
+.*.swp
+*.resharper*
+_ReSharper*
+*ReSharper.user*
+
+#MonoDevelop
+*.userprefs
+*.pidb
