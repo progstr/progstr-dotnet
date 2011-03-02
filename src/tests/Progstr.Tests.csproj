@@ -42,12 +42,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ShouldExtensions.cs" />
+    <Compile Include="HeadersSet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Progstr\Progstr.csproj">
+    <ProjectReference Include="..\progstr\Progstr.csproj">
       <Project>{3F9DC936-E3D8-4412-B6F0-596192BC269D}</Project>
       <Name>Progstr</Name>
     </ProjectReference>
