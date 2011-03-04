@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progstr", "progstr\Progstr.csproj", "{3F9DC936-E3D8-4412-B6F0-596192BC269D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progstr.Log", "progstr\Progstr.Log.csproj", "{3F9DC936-E3D8-4412-B6F0-596192BC269D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progstr.Tests", "tests\Progstr.Tests.csproj", "{AA472072-83CC-4FC2-B7F3-DE8A7B078976}"
 EndProject
