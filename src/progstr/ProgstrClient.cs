@@ -7,7 +7,7 @@ using System.Net;
 using System.Diagnostics;
 using System.Configuration;
 
-namespace Progstr
+namespace Progstr.Log
 {
     public class ProgstrClient
     {

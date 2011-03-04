@@ -1,5 +1,6 @@
 using System;
 using Xunit;
+using Progstr.Log;
 
 namespace Progstr.Tests
 {

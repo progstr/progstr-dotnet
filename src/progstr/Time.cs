@@ -1,5 +1,5 @@
 using System;
-namespace Progstr
+namespace Progstr.Log
 {
     public class Time
     {

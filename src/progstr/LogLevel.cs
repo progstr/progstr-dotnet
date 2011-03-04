@@ -1,6 +1,6 @@
 using System;
 
-namespace Progstr
+namespace Progstr.Log
 {
     public enum LogLevel
     {

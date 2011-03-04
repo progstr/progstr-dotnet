@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using Progstr.Log;
 
 namespace Progstr.Tests
 {

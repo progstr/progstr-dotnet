@@ -67,9 +67,9 @@
     <Content Include="Global.asax" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\progstr\Progstr.csproj">
+    <ProjectReference Include="..\progstr\Progstr.Log.csproj">
       <Project>{3F9DC936-E3D8-4412-B6F0-596192BC269D}</Project>
-      <Name>Progstr</Name>
+      <Name>Progstr.Log</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
-using Progstr;
+using Progstr.Log;
 using System.Configuration;
 
 namespace Controllers
