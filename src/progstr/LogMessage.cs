@@ -1,33 +1,22 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace Progstr
 {
+    [DataContract]
     public class LogMessage
     {
-        public LogMessage()
-        {
-        }
-
-        public string Source
-        {
-            get;
-            set;
-        }
-        public string Text
-        {
-            get;
-            set;
-        }
-        public long Time
-        {
-            get;
-            set;
-        }
-        public LogLevel Level
-        {
-            get;
-            set;
-        }
+        [DataMember(Name = "source")]
+        public string Source { get; set; }
+        
+        [DataMember(Name = "text")]
+        public string Text { get; set; }
+        
+        [DataMember(Name = "time")]
+        public long Time { get; set; }
+        
+        [DataMember(Name = "level")]
+        public LogLevel Level { get; set; }
     }
 }
 
