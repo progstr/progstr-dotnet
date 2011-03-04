@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Progstr;
+using System.Configuration;
 
 namespace Controllers
 {
@@ -20,7 +21,7 @@ namespace Controllers
                 Level = LogLevel.Info,
                 Time = Time.MillisecondNow
             };
-            var client = new ProgstrClient("DEMO");
+            var client = new ProgstrClient(ConfigurationManager.AppSettings["progstr.api.token"]);
             client.Send(message);
             
             ViewData["Message"] = "Welcome to ASP.NET MVC on Mono!";

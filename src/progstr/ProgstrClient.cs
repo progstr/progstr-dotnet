@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Net;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace Progstr
 {
@@ -92,7 +93,8 @@ namespace Progstr
         
         private void CreateWebRequest()
         {
-            var fullUrl = "http://localhost:8081/log";
+            var baseUrl = ConfigurationManager.AppSettings["progstr.api.baseurl"] ?? "api.progstr.com";
+            var fullUrl = string.Format("http://{0}/log", baseUrl);
             
             this.request = (HttpWebRequest) WebRequest.Create(fullUrl);
             ServicePointManager.Expect100Continue = false;

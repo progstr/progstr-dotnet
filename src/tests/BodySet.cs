@@ -19,7 +19,7 @@ namespace Progstr.Tests
             };
             
             
-            this.jsonTemplate = "{\"Level\":5,\"Source\":\"test-source\",\"Text\":\"Something wild\",\"Time\":[TIME]}";
+            this.jsonTemplate = "{\"level\":5,\"source\":\"test-source\",\"text\":\"Something wild\",\"time\":[TIME]}";
             
             this.client = new TestClient("DEMO");
         }
@@ -40,7 +40,7 @@ namespace Progstr.Tests
             
             client.Send(this.message);
             
-            var template = "{\"Level\":5,\"Source\":\"test-source\",\"Text\":\"\\\\'\\\"weird characters\",\"Time\":[TIME]}";
+            var template = "{\"level\":5,\"source\":\"test-source\",\"text\":\"\\\\'\\\"weird characters\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
             client.LastBody.ShouldBe(expected);
         }
@@ -52,7 +52,7 @@ namespace Progstr.Tests
             
             client.Send(this.message);
             
-            var template = "{\"Level\":5,\"Source\":\"test-source\",\"Text\":\"проба на кирилица!\",\"Time\":[TIME]}";
+            var template = "{\"level\":5,\"source\":\"test-source\",\"text\":\"проба на кирилица!\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
             client.LastBody.ShouldBe(expected);
         }

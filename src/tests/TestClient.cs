@@ -27,6 +27,10 @@ namespace Progstr.Tests
         {
             LastBody = json;
         }
+        
+        public override void Execute()
+        {
+        }
     }
 }
 
