@@ -47,6 +47,7 @@
     <Compile Include="HeadersSet.cs" />
     <Compile Include="BodySet.cs" />
     <Compile Include="TestClient.cs" />
+    <Compile Include="SettingsRead.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\progstr\Progstr.Log.csproj">

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 using System.Runtime.Serialization;
@@ -12,10 +13,16 @@ namespace Progstr.Log
     public class ProgstrClient
     {
         protected string apiToken;
+        protected NameValueCollection settings;
 
-        public ProgstrClient(string apiToken)
+        public ProgstrClient(string apiToken) : this(apiToken, ConfigurationManager.AppSettings)
+        {            
+        }
+        
+        public ProgstrClient(string apiToken, NameValueCollection settings)
         {
             this.apiToken = apiToken;
+            this.settings = settings;
         }
 
         public virtual void AddHeader(string name, string value)
@@ -91,12 +98,22 @@ namespace Progstr.Log
 
         private HttpWebRequest request;
         
+        public string ApiUrl
+        {
+            get
+            {
+                var baseUrl = this.settings["progstr.api.baseurl"] ?? "api.progstr.com";
+                if (baseUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || 
+                    baseUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                    return string.Format("{0}/log", baseUrl);
+                else
+                    return string.Format("http://{0}/log", baseUrl);
+            }
+        }
+        
         private void CreateWebRequest()
         {
-            var baseUrl = ConfigurationManager.AppSettings["progstr.api.baseurl"] ?? "api.progstr.com";
-            var fullUrl = string.Format("http://{0}/log", baseUrl);
-            
-            this.request = (HttpWebRequest) WebRequest.Create(fullUrl);
+            this.request = (HttpWebRequest) WebRequest.Create(ApiUrl);
             ServicePointManager.Expect100Continue = false;
             
             this.request.Method = "POST";
