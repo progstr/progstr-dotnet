@@ -34,6 +34,21 @@ namespace Progstr.Tests
             var client = new TestClient("DEMO", this.settings);
             client.ApiUrl.ShouldBe("http://localhost:9091/log");
         }
+        
+        [Fact]
+        public void CompressionDefaultEnabled()
+        {
+            var client = new TestClient("DEMO", this.settings);
+            client.EnableCompression.ShouldBe(true);
+        }
+        
+        [Fact]
+        public void DisableCompression()
+        {
+            this.settings["progstr.api.enablecompression"] = "false";
+            var client = new TestClient("DEMO", this.settings);
+            client.EnableCompression.ShouldBe(false);
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Specialized;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -41,14 +42,17 @@ namespace Progstr.Log
         {
             this.AddHeader("Accept", "application/json");
             this.AddHeader("Content-Type", "application/json; charset=utf-8");
+            if (this.EnableCompression)
+                this.AddHeader("Content-Encoding", "gzip");
+            this.AddHeader("Accept-Encoding", "gzip");
             this.AddHeader("User-Agent", "progstr-dotnet " + MajorMinorVersion());
             this.AddHeader("X-Progstr-Token", this.apiToken);
         }
 
-        string body = "";
-        public virtual void AddBody(string json)
+        byte[] body = new byte[0];
+        public virtual void AddBody(byte[] body)
         {
-            body = json;
+            this.body = body;
         }
 
         public virtual void ConfigureBody(LogMessage message)
@@ -57,21 +61,30 @@ namespace Progstr.Log
             var serializer = new DataContractJsonSerializer(typeof(LogMessage));
             serializer.WriteObject(buffer, message);
             
-            buffer.Seek(0, SeekOrigin.Begin);
-            var data = new byte[buffer.Length];
-            buffer.Read(data, 0, data.Length);
+            var data = buffer.ToArray();
+            if (this.EnableCompression)
+                data = this.Compress(data);
             
-            var json = Encoding.UTF8.GetString(data);
-            this.AddBody(json);
+            this.AddBody(data);
         }
 
+        private byte[] Compress(byte[] input)
+        {
+            var buffer = new MemoryStream();
+            using (var compressor = new GZipStream(buffer, CompressionMode.Compress))
+            {
+                compressor.Write(input, 0, input.Length);
+            }
+            return buffer.ToArray();
+        }
+        
         public virtual void Execute()
         {
-            this.request.ContentLength = Encoding.UTF8.GetByteCount(this.body);
+            this.request.ContentLength = this.body.Length;
             
             using (var requestStream = this.request.GetRequestStream())
             {
-                requestStream.Write(Encoding.UTF8.GetBytes(this.body), 0, Encoding.UTF8.GetByteCount(this.body));
+                requestStream.Write(this.body, 0, this.body.Length);
             }
             
             HttpWebResponse response = null;
@@ -108,6 +121,15 @@ namespace Progstr.Log
                     return string.Format("{0}/log", baseUrl);
                 else
                     return string.Format("http://{0}/log", baseUrl);
+            }
+        }
+        
+        public bool EnableCompression
+        {
+            get
+            {
+                var stringValue = this.settings["progstr.api.enablecompression"] ?? "true";
+                return Convert.ToBoolean(stringValue);
             }
         }
         

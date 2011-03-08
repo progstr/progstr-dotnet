@@ -27,11 +27,11 @@ namespace Progstr.Tests
             get { return headerBuffer.ToString(); }
         }
         
-        public string LastBody { get; private set; }
+        public byte[] LastBody { get; private set; }
         
-        public override void AddBody(string json)
+        public override void AddBody(byte[] body)
         {
-            LastBody = json;
+            LastBody = body;
         }
         
         public override void Execute()
