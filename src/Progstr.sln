@@ -27,7 +27,7 @@ Global
 		{AC728849-080B-4883-844D-7758CADB5788}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = WebExample\WebExample.csproj
+		StartupItem = mvc-example\MVCExample.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

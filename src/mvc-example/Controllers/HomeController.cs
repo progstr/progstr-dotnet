@@ -24,6 +24,18 @@ namespace Controllers
             var client = new ProgstrClient(ConfigurationManager.AppSettings["progstr.api.token"]);
             client.Send(message);
             
+            try 
+            {
+                throw new InvalidOperationException("Oh, noes!");
+            }
+            catch (Exception error)
+            {
+                message.Text = error.ToString();
+                message.Level = LogLevel.Error;
+            }
+            
+            client.Send(message);
+            
             ViewData["Message"] = "Welcome to ASP.NET MVC on Mono!";
             return View();
         }
