@@ -136,7 +136,6 @@ namespace Progstr.Log
         private void CreateWebRequest()
         {
             this.request = (HttpWebRequest) WebRequest.Create(ApiUrl);
-            ServicePointManager.Expect100Continue = false;
             
             this.request.Method = "POST";
         }
