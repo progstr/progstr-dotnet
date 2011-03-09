@@ -34,6 +34,7 @@ namespace Controllers
                 message.Level = LogLevel.Error;
             }
             
+            message.Time = Time.MillisecondNow;
             client.Send(message);
             
             ViewData["Message"] = "Welcome to ASP.NET MVC on Mono!";
