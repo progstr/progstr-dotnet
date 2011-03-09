@@ -11,12 +11,6 @@ using System.Configuration;
 
 namespace Progstr.Log
 {
-    public class RequestState
-    {
-        public HttpWebRequest Request { get; set; }
-        public byte[] Data { get; set; }
-    }
-    
     public class ProgstrClient
     {
         protected string apiToken;
@@ -77,64 +71,9 @@ namespace Progstr.Log
             return buffer.ToArray();
         }
         
-        public virtual void Execute(RequestState state)
+        public virtual void Execute(LogRequest request)
         {
-            state.Request.ContentLength = state.Data.Length;
-            
-            state.Request.BeginGetRequestStream(OnGetRequestStream, state);
-        }
-        
-        private class StreamState 
-        {
-            public RequestState RequestState { get; set; }
-            public Stream Stream { get; set; }
-        }
-        
-        private void OnGetRequestStream(IAsyncResult result)
-        {
-            var state = (RequestState) result.AsyncState;
-            var requestStream = state.Request.EndGetRequestStream(result);
-            
-            var writeState = new StreamState { Stream = requestStream, RequestState = state };
-            requestStream.BeginWrite(state.Data, 0, state.Data.Length, OnDataWritten, writeState);
-        }
-        
-        private void OnDataWritten(IAsyncResult result)
-        {
-            var writeState = (StreamState) result.AsyncState;
-            writeState.Stream.EndWrite(result);
-            writeState.Stream.Flush();
-            writeState.Stream.Close();
-            
-            var requestState = writeState.RequestState;
-            requestState.Request.BeginGetResponse(OnGetResponse, requestState);
-        }
-        
-        private void OnGetResponse(IAsyncResult result)
-        {
-            var state = (RequestState) result.AsyncState;
-            HttpWebResponse response = null;
-            try
-            {
-                response = (HttpWebResponse) state.Request.EndGetResponse(result);
-            }
-            catch (WebException requestException)
-            {
-                response = (HttpWebResponse) requestException.Response;
-            }
-            
-            var statusCode = response.StatusCode;
-            
-            var reader = new StreamReader(response.GetResponseStream());
-            var responseBody = reader.ReadToEnd();
-            
-            if (statusCode != HttpStatusCode.OK)
-            {
-                Debug.WriteLine("Log HTTP request failed with status: " + statusCode);
-                Trace.TraceError("Log HTTP request failed with status: " + statusCode);
-                Debug.WriteLine("Response body:\r\n" + responseBody);
-                Trace.TraceError("Response body:\r\n" + responseBody);
-            }
+            request.Start();
         }
         
         public string ApiUrl
@@ -168,13 +107,13 @@ namespace Progstr.Log
 
         public virtual void Send(LogMessage message)
         {
-            var request = this.CreateWebRequest();
-            this.ConfigureRequest(request);
+            var webRequest = this.CreateWebRequest();
+            this.ConfigureRequest(webRequest);
             
             var data = this.EncodeData(message);
             
-            var state = new RequestState { Request = request, Data = data };
-            this.Execute(state);
+            var request = new LogRequest(webRequest) { Data = data };
+            this.Execute(request);
         }
 
         public string MajorMinorVersion()
