@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Specialized;
+using System.Net;
 using System.Text;
 using Progstr.Log;
 
@@ -17,7 +18,7 @@ namespace Progstr.Tests
 
         private StringBuilder headerBuffer = new StringBuilder();
 
-        public override void AddHeader(string name, string value)
+        public override void AddHeader(HttpWebRequest request, string name, string value)
         {
             headerBuffer.AppendLine(string.Format("{0}: {1}", name, value));
         }
@@ -29,13 +30,9 @@ namespace Progstr.Tests
         
         public byte[] LastBody { get; private set; }
         
-        public override void AddBody(byte[] body)
+        public override void Execute(RequestState state)
         {
-            LastBody = body;
-        }
-        
-        public override void Execute()
-        {
+            LastBody = state.Data;
         }
     }
 }

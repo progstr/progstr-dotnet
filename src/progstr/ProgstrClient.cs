@@ -11,6 +11,12 @@ using System.Configuration;
 
 namespace Progstr.Log
 {
+    public class RequestState
+    {
+        public HttpWebRequest Request { get; set; }
+        public byte[] Data { get; set; }
+    }
+    
     public class ProgstrClient
     {
         protected string apiToken;
@@ -26,36 +32,29 @@ namespace Progstr.Log
             this.settings = settings;
         }
 
-        public virtual void AddHeader(string name, string value)
+        public virtual void AddHeader(HttpWebRequest request, string name, string value)
         {
             if (name == "Accept")
-                this.request.Accept = value;
+                request.Accept = value;
             else if (name == "Content-Type")
-                this.request.ContentType = value;
+                request.ContentType = value;
             else if (name == "User-Agent")
-                this.request.UserAgent = value;
+                request.UserAgent = value;
             else
-                this.request.Headers[name] = value;
+                request.Headers[name] = value;
         }
 
-        public void ConfigureRequest()
+        public void ConfigureRequest(HttpWebRequest request)
         {
-            this.AddHeader("Accept", "application/json");
-            this.AddHeader("Content-Type", "application/json; charset=utf-8");
+            this.AddHeader(request, "Accept", "application/json");
+            this.AddHeader(request, "Content-Type", "application/json; charset=utf-8");
             if (this.EnableCompression)
-                this.AddHeader("Content-Encoding", "gzip");
-            this.AddHeader("Accept-Encoding", "gzip");
-            this.AddHeader("User-Agent", "progstr-dotnet " + MajorMinorVersion());
-            this.AddHeader("X-Progstr-Token", this.apiToken);
+                this.AddHeader(request, "Content-Encoding", "gzip");
+            this.AddHeader(request, "User-Agent", "progstr-dotnet " + MajorMinorVersion());
+            this.AddHeader(request, "X-Progstr-Token", this.apiToken);
         }
 
-        byte[] body = new byte[0];
-        public virtual void AddBody(byte[] body)
-        {
-            this.body = body;
-        }
-
-        public virtual void ConfigureBody(LogMessage message)
+        private byte[] EncodeData(LogMessage message)
         {
             var buffer = new MemoryStream();
             var serializer = new DataContractJsonSerializer(typeof(LogMessage));
@@ -65,7 +64,7 @@ namespace Progstr.Log
             if (this.EnableCompression)
                 data = this.Compress(data);
             
-            this.AddBody(data);
+            return data;
         }
 
         private byte[] Compress(byte[] input)
@@ -78,19 +77,46 @@ namespace Progstr.Log
             return buffer.ToArray();
         }
         
-        public virtual void Execute()
+        public virtual void Execute(RequestState state)
         {
-            this.request.ContentLength = this.body.Length;
+            state.Request.ContentLength = state.Data.Length;
             
-            using (var requestStream = this.request.GetRequestStream())
-            {
-                requestStream.Write(this.body, 0, this.body.Length);
-            }
+            state.Request.BeginGetRequestStream(OnGetRequestStream, state);
+        }
+        
+        private class StreamState 
+        {
+            public RequestState RequestState { get; set; }
+            public Stream Stream { get; set; }
+        }
+        
+        private void OnGetRequestStream(IAsyncResult result)
+        {
+            var state = (RequestState) result.AsyncState;
+            var requestStream = state.Request.EndGetRequestStream(result);
             
+            var writeState = new StreamState { Stream = requestStream, RequestState = state };
+            requestStream.BeginWrite(state.Data, 0, state.Data.Length, OnDataWritten, writeState);
+        }
+        
+        private void OnDataWritten(IAsyncResult result)
+        {
+            var writeState = (StreamState) result.AsyncState;
+            writeState.Stream.EndWrite(result);
+            writeState.Stream.Flush();
+            writeState.Stream.Close();
+            
+            var requestState = writeState.RequestState;
+            requestState.Request.BeginGetResponse(OnGetResponse, requestState);
+        }
+        
+        private void OnGetResponse(IAsyncResult result)
+        {
+            var state = (RequestState) result.AsyncState;
             HttpWebResponse response = null;
             try
             {
-                response = (HttpWebResponse) this.request.GetResponse();
+                response = (HttpWebResponse) state.Request.EndGetResponse(result);
             }
             catch (WebException requestException)
             {
@@ -105,11 +131,11 @@ namespace Progstr.Log
             if (statusCode != HttpStatusCode.OK)
             {
                 Debug.WriteLine("Log HTTP request failed with status: " + statusCode);
+                Trace.TraceError("Log HTTP request failed with status: " + statusCode);
                 Debug.WriteLine("Response body:\r\n" + responseBody);
+                Trace.TraceError("Response body:\r\n" + responseBody);
             }
         }
-
-        private HttpWebRequest request;
         
         public string ApiUrl
         {
@@ -133,20 +159,22 @@ namespace Progstr.Log
             }
         }
         
-        private void CreateWebRequest()
+        private HttpWebRequest CreateWebRequest()
         {
-            this.request = (HttpWebRequest) WebRequest.Create(ApiUrl);
-            
-            this.request.Method = "POST";
+            var request = (HttpWebRequest) WebRequest.Create(ApiUrl);
+            request.Method = "POST";
+            return request;
         }
 
         public virtual void Send(LogMessage message)
         {
-            this.CreateWebRequest();
+            var request = this.CreateWebRequest();
+            this.ConfigureRequest(request);
             
-            this.ConfigureRequest();
-            this.ConfigureBody(message);
-            this.Execute();
+            var data = this.EncodeData(message);
+            
+            var state = new RequestState { Request = request, Data = data };
+            this.Execute(state);
         }
 
         public string MajorMinorVersion()
