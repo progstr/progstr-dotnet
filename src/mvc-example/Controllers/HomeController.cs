@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Progstr.Log;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace Controllers
 {
@@ -34,10 +35,16 @@ namespace Controllers
                 message.Level = LogLevel.Error;
             }
             
-            message.Time = Time.MillisecondNow;
-            client.Send(message);
+            var stopwatch = Stopwatch.StartNew();
+            for (var i = 0; i < 10; i++)
+            {
+                message.Time = Time.MillisecondNow;
+                client.Send(message);
+            }
             
-            ViewData["Message"] = "Welcome to ASP.NET MVC on Mono!";
+            stopwatch.Stop();
+            
+            ViewData["Message"] = "Welcome to ASP.NET MVC on Mono! " + stopwatch.Elapsed.TotalSeconds;
             return View();
         }
     }
