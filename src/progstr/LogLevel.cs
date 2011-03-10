@@ -4,12 +4,10 @@ namespace Progstr.Log
 {
     public enum LogLevel
     {
-        Trace = 0,
-        Debug = 1,
-        Info = 2,
-        Warning = 3,
-        Error = 4,
-        Fatal = 5
+        Info = 0,
+        Warning = 1,
+        Error = 2,
+        Fatal = 3
     }
 }
 
