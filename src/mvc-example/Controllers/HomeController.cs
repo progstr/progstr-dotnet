@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
-using Progstr.Log.Internal;
+using Progstr.Log;
 using System.Configuration;
 using System.Diagnostics;
 
@@ -15,32 +15,23 @@ namespace Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {
-            var message = new LogMessage {
-                Source = "Controllers.HomeController",
-                Text = "Welcome to ASP.NET MVC on Mono!",
-                Level = LogLevel.Info,
-                Host = LogEnvironment.Host,
-                Time = Time.MillisecondNow
-            };
-            var client = new ProgstrClient(ConfigurationManager.AppSettings["progstr.api.token"]);
-            client.Send(message);
+        {           
+            this.Log().Info("Welcome to ASP.NET MVC on Mono!");
             
+            var message = "";
             try 
             {
                 throw new InvalidOperationException("Oh, noes!");
             }
             catch (Exception error)
             {
-                message.Text = error.ToString();
-                message.Level = LogLevel.Error;
+                message = error.ToString();
             }
             
             var stopwatch = Stopwatch.StartNew();
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 2; i++)
             {
-                message.Time = Time.MillisecondNow;
-                client.Send(message);
+                Log.For<HomeController>().Error(message);
             }
             
             stopwatch.Stop();

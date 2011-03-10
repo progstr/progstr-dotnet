@@ -10,12 +10,13 @@ namespace Progstr.Tests
         
         public SettingsRead()
         {
+            this.settings["progstr.log.apitoken"] = "DEMO";
         }
         
         [Fact]
         public void ApiBaseUrl()
         {
-            var client = new TestClient("DEMO", this.settings);
+            var client = new TestClient(this.settings);
             client.ApiUrl.ShouldBe("http://api.progstr.com/log");
         }
         
@@ -23,7 +24,7 @@ namespace Progstr.Tests
         public void OverrideApiUrl()
         {
             this.settings["progstr.api.baseurl"] = "localhost:9091";
-            var client = new TestClient("DEMO", this.settings);
+            var client = new TestClient(this.settings);
             client.ApiUrl.ShouldBe("http://localhost:9091/log");
         }
         
@@ -31,14 +32,14 @@ namespace Progstr.Tests
         public void IgnoreLeadingProtocolForApiUrl()
         {
             this.settings["progstr.api.baseurl"] = "http://localhost:9091";
-            var client = new TestClient("DEMO", this.settings);
+            var client = new TestClient(this.settings);
             client.ApiUrl.ShouldBe("http://localhost:9091/log");
         }
         
         [Fact]
         public void CompressionDefaultEnabled()
         {
-            var client = new TestClient("DEMO", this.settings);
+            var client = new TestClient(this.settings);
             client.EnableCompression.ShouldBe(true);
         }
         
@@ -46,7 +47,7 @@ namespace Progstr.Tests
         public void DisableCompression()
         {
             this.settings["progstr.api.enablecompression"] = "false";
-            var client = new TestClient("DEMO", this.settings);
+            var client = new TestClient(this.settings);
             client.EnableCompression.ShouldBe(false);
         }
     }

@@ -29,7 +29,8 @@ namespace Progstr.Tests
             this.jsonTemplate = "{\"host\":\"web-server1\",\"level\":3,\"source\":\"test-source\",\"text\":\"Something wild\",\"time\":[TIME]}";
             
             this.settings = new NameValueCollection();
-            this.client = new TestClient("DEMO", this.settings);
+            this.settings["progstr.log.apitoken"] = "DEMO";
+            this.client = new TestClient(this.settings);
         }
         
         private string Uncompress(byte[] data)

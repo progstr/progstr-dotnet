@@ -16,13 +16,15 @@ namespace Progstr.Log.Internal
         protected string apiToken;
         protected NameValueCollection settings;
 
-        public ProgstrClient(string apiToken) : this(apiToken, ConfigurationManager.AppSettings)
+        public ProgstrClient() : this(ConfigurationManager.AppSettings)
         {            
         }
         
-        public ProgstrClient(string apiToken, NameValueCollection settings)
+        public ProgstrClient(NameValueCollection settings)
         {
-            this.apiToken = apiToken;
+            this.apiToken = settings["progstr.log.apitoken"];
+            if (string.IsNullOrEmpty(this.apiToken))
+                throw new InvalidOperationException("Bad or missing API token. Make sure the 'progstr.log.apitoken' setting is set.");
             this.settings = settings;
         }
 

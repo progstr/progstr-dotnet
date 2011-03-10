@@ -8,11 +8,11 @@ namespace Progstr.Tests
 {
     public class TestClient : ProgstrClient
     {
-        public TestClient(string apiToken) : base(apiToken)
+        public TestClient() : base()
         {
         }
         
-        public TestClient(string apiToken, NameValueCollection settings) : base(apiToken, settings)
+        public TestClient(NameValueCollection settings) : base(settings)
         {
         }
 

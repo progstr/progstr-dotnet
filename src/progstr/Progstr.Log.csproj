@@ -48,6 +48,9 @@
     <Compile Include="Internal\LogRequest.cs" />
     <Compile Include="Internal\ProgstrClient.cs" />
     <Compile Include="Internal\Time.cs" />
+    <Compile Include="ILog.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Internal\LogFacade.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
