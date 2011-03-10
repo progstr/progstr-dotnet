@@ -18,23 +18,25 @@ namespace Controllers
         {           
             this.Log().Info("Welcome to ASP.NET MVC on Mono!");
             
-            var message = "";
+            Exception lastError = null;
             try 
             {
                 throw new InvalidOperationException("Oh, noes!");
             }
             catch (Exception error)
             {
-                message = error.ToString();
+                lastError = error;
             }
             
             var stopwatch = Stopwatch.StartNew();
             for (var i = 0; i < 2; i++)
             {
-                Log.For<HomeController>().Error(message);
+                Log.For<HomeController>().Error("Oops! Something went wrong.", lastError);
             }
             
             stopwatch.Stop();
+            
+            this.Log().Info("Hello, {0}, how are {1}?", "John", "you");
             
             ViewData["Message"] = "Welcome to ASP.NET MVC on Mono! " + stopwatch.Elapsed.TotalSeconds;
             return View();

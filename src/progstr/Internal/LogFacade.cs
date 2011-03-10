@@ -11,25 +11,75 @@ namespace Progstr.Log.Internal
         {
             this.source = source;
         }
+        
+        private string FormatException(string text, Exception error)
+        {
+            return string.Format("{0}\r\nException:\r\n{1}", text, error);
+        }
+        
+        private string FormatObjects(string template, params object[] args)
+        {
+            return string.Format(template, args);
+        }
 
         public void Info(string text)
         {
             this.LogWithLevel(LogLevel.Info, text);
+        }
+        
+        public void Info(string text, Exception error)
+        {
+            this.Info(FormatException(text, error));
+        }
+        
+        public void Info(string template, params object[] args)
+        {
+            this.Info(FormatObjects(template, args));
         }
 
         public void Warning(string text)
         {
             this.LogWithLevel(LogLevel.Warning, text);
         }
+        
+        public void Warning(string text, Exception error)
+        {
+            this.Warning(FormatException(text, error));
+        }
+        
+        public void Warning(string template, params object[] args)
+        {
+            this.Warning(FormatObjects(template, args));
+        }
 
         public void Error(string text)
         {
             this.LogWithLevel(LogLevel.Error, text);
         }
+        
+        public void Error(string text, Exception error)
+        {
+            this.Error(FormatException(text, error));
+        }
+        
+        public void Error(string template, params object[] args)
+        {
+            this.Error(FormatObjects(template, args));
+        }
 
         public void Fatal(string text)
         {
             this.LogWithLevel(LogLevel.Fatal, text);
+        }
+        
+        public void Fatal(string text, Exception error)
+        {
+            this.Fatal(FormatException(text, error));
+        }
+        
+        public void Fatal(string template, params object[] args)
+        {
+            this.Fatal(FormatObjects(template, args));
         }
 
         private void LogWithLevel(LogLevel level, string text)
