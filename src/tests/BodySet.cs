@@ -26,7 +26,7 @@ namespace Progstr.Tests
             };
             
             
-            this.jsonTemplate = "{\"host\":\"web-server1\",\"level\":5,\"source\":\"test-source\",\"text\":\"Something wild\",\"time\":[TIME]}";
+            this.jsonTemplate = "{\"host\":\"web-server1\",\"level\":3,\"source\":\"test-source\",\"text\":\"Something wild\",\"time\":[TIME]}";
             
             this.settings = new NameValueCollection();
             this.client = new TestClient("DEMO", this.settings);
@@ -60,7 +60,7 @@ namespace Progstr.Tests
             
             client.Send(this.message);
             
-            var template = "{\"host\":\"web-server1\",\"level\":5,\"source\":\"test-source\",\"text\":\"\\\\'\\\"weird characters\",\"time\":[TIME]}";
+            var template = "{\"host\":\"web-server1\",\"level\":3,\"source\":\"test-source\",\"text\":\"\\\\'\\\"weird characters\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
             Uncompress(client.LastBody).ShouldBe(expected);
         }
@@ -72,7 +72,7 @@ namespace Progstr.Tests
             
             client.Send(this.message);
             
-            var template = "{\"host\":\"web-server1\",\"level\":5,\"source\":\"test-source\",\"text\":\"проба на кирилица!\",\"time\":[TIME]}";
+            var template = "{\"host\":\"web-server1\",\"level\":3,\"source\":\"test-source\",\"text\":\"проба на кирилица!\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
             Uncompress(client.LastBody).ShouldBe(expected);
         }
