@@ -9,6 +9,9 @@ namespace Progstr.Log
         [DataMember(Name = "source")]
         public string Source { get; set; }
         
+        [DataMember(Name = "host")]
+        public string Host { get; set; }
+        
         [DataMember(Name = "text")]
         public string Text { get; set; }
         

@@ -20,26 +20,28 @@ namespace Progstr.Tests
             this.message = new LogMessage {
                 Level = LogLevel.Fatal,
                 Source = "test-source",
+                Host = "web-server1",
                 Text = "Something wild",
                 Time = Time.MillisecondNow
             };
             
             
-            this.jsonTemplate = "{\"level\":5,\"source\":\"test-source\",\"text\":\"Something wild\",\"time\":[TIME]}";
+            this.jsonTemplate = "{\"host\":\"web-server1\",\"level\":5,\"source\":\"test-source\",\"text\":\"Something wild\",\"time\":[TIME]}";
             
             this.settings = new NameValueCollection();
             this.client = new TestClient("DEMO", this.settings);
         }
         
-        private byte[] CompressString(string value)
+        private string Uncompress(byte[] data)
         {
             var buffer = new MemoryStream();
-            using (var compressor = new GZipStream(buffer, CompressionMode.Compress))
+            buffer.Write(data, 0, data.Length);
+            buffer.Seek(0, SeekOrigin.Begin);
+            
+            using (var reader = new StreamReader(new GZipStream(buffer, CompressionMode.Decompress), Encoding.UTF8))
             {
-                byte[] stringBinary = Encoding.UTF8.GetBytes(value);
-                compressor.Write(stringBinary, 0, stringBinary.Length);
+                return reader.ReadToEnd();
             }
-            return buffer.ToArray();
         }
         
         [Fact]
@@ -48,7 +50,7 @@ namespace Progstr.Tests
             client.Send(this.message);
             
             var expected = jsonTemplate.Replace("[TIME]", message.Time.ToString());
-            client.LastBody.ShouldBe(this.CompressString(expected));
+            Uncompress(client.LastBody).ShouldBe(expected);
         }
         
         [Fact]
@@ -58,9 +60,9 @@ namespace Progstr.Tests
             
             client.Send(this.message);
             
-            var template = "{\"level\":5,\"source\":\"test-source\",\"text\":\"\\\\'\\\"weird characters\",\"time\":[TIME]}";
+            var template = "{\"host\":\"web-server1\",\"level\":5,\"source\":\"test-source\",\"text\":\"\\\\'\\\"weird characters\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
-            client.LastBody.ShouldBe(this.CompressString(expected));
+            Uncompress(client.LastBody).ShouldBe(expected);
         }
         
         [Fact]
@@ -70,9 +72,9 @@ namespace Progstr.Tests
             
             client.Send(this.message);
             
-            var template = "{\"level\":5,\"source\":\"test-source\",\"text\":\"проба на кирилица!\",\"time\":[TIME]}";
+            var template = "{\"host\":\"web-server1\",\"level\":5,\"source\":\"test-source\",\"text\":\"проба на кирилица!\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
-            client.LastBody.ShouldBe(this.CompressString(expected));
+            Uncompress(client.LastBody).ShouldBe(expected);
         }
         
         [Fact]

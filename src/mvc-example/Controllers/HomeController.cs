@@ -20,6 +20,7 @@ namespace Controllers
                 Source = "Controllers.HomeController",
                 Text = "Welcome to ASP.NET MVC on Mono!",
                 Level = LogLevel.Info,
+                Host = LogEnvironment.Host,
                 Time = Time.MillisecondNow
             };
             var client = new ProgstrClient(ConfigurationManager.AppSettings["progstr.api.token"]);

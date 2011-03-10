@@ -47,6 +47,7 @@
     <Compile Include="ProgstrClient.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="LogRequest.cs" />
+    <Compile Include="LogEnvironment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
