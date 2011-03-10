@@ -3,7 +3,7 @@ using System.Net;
 using System.IO;
 using System.Diagnostics;
 
-namespace Progstr.Log
+namespace Progstr.Log.Internal
 {
     public class LogRequest
     {

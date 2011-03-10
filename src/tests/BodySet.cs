@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 using Xunit;
-using Progstr.Log;
+using Progstr.Log.Internal;
 
 namespace Progstr.Tests
 {

@@ -9,7 +9,7 @@ using System.Net;
 using System.Diagnostics;
 using System.Configuration;
 
-namespace Progstr.Log
+namespace Progstr.Log.Internal
 {
     public class ProgstrClient
     {

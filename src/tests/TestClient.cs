@@ -2,7 +2,7 @@ using System;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
-using Progstr.Log;
+using Progstr.Log.Internal;
 
 namespace Progstr.Tests
 {

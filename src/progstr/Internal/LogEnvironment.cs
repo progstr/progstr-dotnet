@@ -2,15 +2,21 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Progstr.Log
+namespace Progstr.Log.Internal
 {
     public class LogEnvironment
     {
+        private static string host;
+        
         public static string Host
         {
             get
             {
-                return GetMachineName() ?? GetDnsHostName() ?? "Unknown";   
+                if (host == null)
+                {
+                    host = GetMachineName() ?? GetDnsHostName() ?? "Unknown";
+                }
+                return host;
             }
         }
         

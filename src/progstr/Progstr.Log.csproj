@@ -42,12 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="LogMessage.cs" />
-    <Compile Include="LogLevel.cs" />
-    <Compile Include="ProgstrClient.cs" />
-    <Compile Include="Time.cs" />
-    <Compile Include="LogRequest.cs" />
-    <Compile Include="LogEnvironment.cs" />
+    <Compile Include="Internal\LogEnvironment.cs" />
+    <Compile Include="Internal\LogLevel.cs" />
+    <Compile Include="Internal\LogMessage.cs" />
+    <Compile Include="Internal\LogRequest.cs" />
+    <Compile Include="Internal\ProgstrClient.cs" />
+    <Compile Include="Internal\Time.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Internal\" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Progstr.Log
+namespace Progstr.Log.Internal
 {
     [DataContract]
     public class LogMessage
