@@ -73,8 +73,20 @@ namespace Progstr.Log.Internal
             return buffer.ToArray();
         }
         
-        public virtual void Execute(LogRequest request)
+        protected LogRequest CreateLogRequest(LogMessage message)
         {
+            var webRequest = this.CreateWebRequest();
+            this.ConfigureRequest(webRequest);
+            
+            var data = this.EncodeData(message);
+            
+            return new LogRequest(webRequest) { Data = data };
+            
+        }
+        
+        public virtual void Execute(LogMessage message)
+        {
+            var request = this.CreateLogRequest(message);
             request.Start();
         }
         
@@ -109,13 +121,10 @@ namespace Progstr.Log.Internal
 
         public virtual void Send(LogMessage message)
         {
-            var webRequest = this.CreateWebRequest();
-            this.ConfigureRequest(webRequest);
-            
-            var data = this.EncodeData(message);
-            
-            var request = new LogRequest(webRequest) { Data = data };
-            this.Execute(request);
+            Action asyncAction = () => {
+                this.Execute(message);
+            };
+            asyncAction.BeginInvoke((result) => {}, null);
         }
 
         public string MajorMinorVersion()

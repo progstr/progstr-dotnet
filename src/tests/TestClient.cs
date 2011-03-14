@@ -30,8 +30,9 @@ namespace Progstr.Tests
         
         public byte[] LastBody { get; private set; }
         
-        public override void Execute(LogRequest request)
+        public override void Execute(LogMessage message)
         {
+            var request = CreateLogRequest(message);
             LastBody = request.Data;
         }
     }

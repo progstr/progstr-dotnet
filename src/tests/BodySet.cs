@@ -48,7 +48,7 @@ namespace Progstr.Tests
         [Fact]
         public void BodySerializedAndCompressed()
         {
-            client.Send(this.message);
+            client.Execute(this.message);
             
             var expected = jsonTemplate.Replace("[TIME]", message.Time.ToString());
             Uncompress(client.LastBody).ShouldBe(expected);
@@ -59,7 +59,7 @@ namespace Progstr.Tests
         {
             message.Text = "\\'\"weird characters";   
             
-            client.Send(this.message);
+            client.Execute(this.message);
             
             var template = "{\"host\":\"web-server1\",\"level\":3,\"source\":\"test-source\",\"text\":\"\\\\'\\\"weird characters\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
@@ -71,7 +71,7 @@ namespace Progstr.Tests
         {
             message.Text = "проба на кирилица!";
             
-            client.Send(this.message);
+            client.Execute(this.message);
             
             var template = "{\"host\":\"web-server1\",\"level\":3,\"source\":\"test-source\",\"text\":\"проба на кирилица!\",\"time\":[TIME]}";
             var expected = template.Replace("[TIME]", message.Time.ToString());
@@ -82,7 +82,7 @@ namespace Progstr.Tests
         public void UncompressedBody()
         {
             this.settings["progstr.api.enablecompression"] = "false";
-            client.Send(this.message);
+            client.Execute(this.message);
             
             var expected = jsonTemplate.Replace("[TIME]", message.Time.ToString());
             client.LastBody.ShouldBe(Encoding.UTF8.GetBytes(expected));
