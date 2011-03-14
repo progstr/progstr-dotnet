@@ -31,7 +31,7 @@ namespace Controllers
             var stopwatch = Stopwatch.StartNew();
             for (var i = 0; i < 2; i++)
             {
-                Log.For<HomeController>().Error("Oops! Something went wrong.", lastError);
+                Logs.Get<HomeController>().Error("Oops! Something went wrong.", lastError);
             }
             
             stopwatch.Stop();

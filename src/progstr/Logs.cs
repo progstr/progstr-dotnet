@@ -4,16 +4,16 @@ using Progstr.Log.Internal;
 
 namespace Progstr.Log
 {
-    public static class Log
+    public static class Logs
     {
         private static IDictionary<Type, ILog> logCache = new Dictionary<Type, ILog>();
 
         public static ILog Log<T>(this T target)
         {
-            return Progstr.Log.Log.For<T>();
+            return Get<T>();
         }
         
-        public static ILog For<T>()
+        public static ILog Get<T>()
         {
             var type = typeof(T);
             
