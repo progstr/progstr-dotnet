@@ -1,12 +1,12 @@
-<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <div>
-        <%= Html.Encode(ViewData["Message"]) %>
-    </div>
-</body>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    Home Page
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h2><%= ViewData["Message"] %></h2>
+    <p>
+        To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+    </p>
+</asp:Content>
