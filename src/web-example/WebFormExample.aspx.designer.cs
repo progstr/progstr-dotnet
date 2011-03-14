@@ -14,5 +14,21 @@ namespace WebExample {
 	public partial class WebFormExample {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm form1;
+		
+		protected System.Web.UI.WebControls.TextBox logMessage;
+		
+		protected System.Web.UI.WebControls.RadioButtonList severityList;
+		
+		protected System.Web.UI.WebControls.ListItem info;
+		
+		protected System.Web.UI.WebControls.ListItem warning;
+		
+		protected System.Web.UI.WebControls.ListItem error;
+		
+		protected System.Web.UI.WebControls.ListItem fatal;
+		
+		protected System.Web.UI.WebControls.Button logButton;
+		
+		protected System.Web.UI.WebControls.Label messageArea;
 	}
 }
