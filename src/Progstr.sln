@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progstr.Log", "progstr\Prog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progstr.Tests", "tests\Progstr.Tests.csproj", "{AA472072-83CC-4FC2-B7F3-DE8A7B078976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCExample", "mvc-example\MVCExample.csproj", "{AC728849-080B-4883-844D-7758CADB5788}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCExample", "web-example\WebExample.csproj", "{AC728849-080B-4883-844D-7758CADB5788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
