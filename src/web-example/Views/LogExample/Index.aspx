@@ -11,10 +11,10 @@
     <p><%= Html.TextArea("logMessage", new { style = "height:150px;width:300px;" }) %></p>
     <p>Severity:</p>
     <p>
-        <label><%= Html.RadioButton("severity", "Info", ViewData["Info"] ?? false) %>Info</label>
-        <label><%= Html.RadioButton("severity", "Warning", ViewData["Warning"] ?? false) %>Warning</label>
-        <label><%= Html.RadioButton("severity", "Error", ViewData["Error"] ?? false) %>Error</label>
-        <label><%= Html.RadioButton("severity", "Fatal", ViewData["Fatal"] ?? false) %>Fatal</label>
+        <label><%= Html.RadioButton("severity", "Info", ViewData["Info"]) %>Info</label>
+        <label><%= Html.RadioButton("severity", "Warning", ViewData["Warning"]) %>Warning</label>
+        <label><%= Html.RadioButton("severity", "Error", ViewData["Error"]) %>Error</label>
+        <label><%= Html.RadioButton("severity", "Fatal", ViewData["Fatal"]) %>Fatal</label>
     </p>
     <p><input type="submit" value="Log" /></p>
     <% } %>
