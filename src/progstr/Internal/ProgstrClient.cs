@@ -11,6 +11,9 @@ using System.Configuration;
 
 namespace Progstr.Log.Internal
 {
+    /// <summary>
+    /// This class is meant for internal use only and should not be used directly from your code.
+    /// </summary>
     public class ProgstrClient
     {
         protected string apiToken;
