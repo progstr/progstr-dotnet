@@ -16,6 +16,6 @@
         <label><%= Html.RadioButton("severity", "Error", ViewData["Error"] ?? false) %>Error</label>
         <label><%= Html.RadioButton("severity", "Fatal", ViewData["Fatal"] ?? false) %>Fatal</label>
     </p>
-    <p><input type="submit" value="Log"></input></p>
+    <p><input type="submit" value="Log" /></p>
     <% } %>
 </asp:Content>
