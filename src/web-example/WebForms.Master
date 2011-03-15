@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+﻿<%@ Master Language="C#" Inherits="System.Web.UI.MasterPage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,7 +21,7 @@
             
             <div id="menucontainer">
             
-                <ul id="menu">
+                <ul id="menu">              
                     <li><a href="/">Home</a></li>
                     <li><a href="/LogExample">MVC example</a></li>
                     <li><a href="/WebFormsExample.aspx">WebForms example</a></li>

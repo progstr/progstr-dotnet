@@ -8,7 +8,7 @@ using Progstr.Log;
 
 namespace WebExample
 {
-    public partial class WebFormExample : System.Web.UI.Page
+    public partial class WebFormsExample : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -1,12 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebFormExample.aspx.cs" Inherits="WebExample.WebFormExample" %>
+﻿<%@ Page Language="C#" 
+    MasterPageFile="~/WebForms.Master" 
+    AutoEventWireup="true" 
+    CodeBehind="WebFormsExample.aspx.cs" 
+    Inherits="WebExample.WebFormsExample" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    ASP.NET WebForms Example
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
     <div>
     <p>Log message:</p>
@@ -24,5 +26,4 @@
     <p><asp:Label id="messageArea" runat="server" ForeColor="Red"></asp:Label></p>
     </div>
     </form>
-</body>
-</html>
+</asp:Content>
