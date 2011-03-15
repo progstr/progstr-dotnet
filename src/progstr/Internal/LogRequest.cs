@@ -24,9 +24,15 @@ namespace Progstr.Log.Internal
         
         private void OnGetRequestStream(IAsyncResult result)
         {
-            var requestStream = this.Request.EndGetRequestStream(result);
-            
-            requestStream.BeginWrite(this.Data, 0, this.Data.Length, OnDataWritten, requestStream);
+            try
+            {
+                var requestStream = this.Request.EndGetRequestStream(result);
+                requestStream.BeginWrite(this.Data, 0, this.Data.Length, OnDataWritten, requestStream);
+            }
+            catch (WebException connectError)
+            { 
+                this.OnError(connectError.Status.ToString(), connectError.ToString());
+            }
         }
         
         private void OnDataWritten(IAsyncResult result)
@@ -58,11 +64,16 @@ namespace Progstr.Log.Internal
             
             if (statusCode != HttpStatusCode.OK)
             {
-                Debug.WriteLine("Log HTTP request failed with status: " + statusCode);
-                Trace.TraceError("Log HTTP request failed with status: " + statusCode);
-                Debug.WriteLine("Response body:\r\n" + responseBody);
-                Trace.TraceError("Response body:\r\n" + responseBody);
+                this.OnError(statusCode.ToString(), responseBody);
             }
+        }
+
+        private void OnError(string status, string body)
+        {
+            Debug.WriteLine("Log HTTP request failed with status: " + status);
+            Trace.TraceError("Log HTTP request failed with status: " + status);
+            Debug.WriteLine("Response body:\r\n" + body);
+            Trace.TraceError("Response body:\r\n" + body);
         }
     }
 }
