@@ -41,6 +41,7 @@ namespace WebExample.Controllers
             }
             
             ViewData[severity] = true;
+            ViewData["Message"] = "Log sent to server.";
             return View("Index");
         }
     }
