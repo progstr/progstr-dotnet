@@ -32,7 +32,7 @@ namespace Progstr.Log.Internal
             this.Info(FormatException(text, error));
         }
         
-        public void Info(string template, params object[] args)
+        public void InfoFormat(string template, params object[] args)
         {
             this.Info(FormatObjects(template, args));
         }
@@ -47,7 +47,7 @@ namespace Progstr.Log.Internal
             this.Warning(FormatException(text, error));
         }
         
-        public void Warning(string template, params object[] args)
+        public void WarningFormat(string template, params object[] args)
         {
             this.Warning(FormatObjects(template, args));
         }
@@ -62,7 +62,7 @@ namespace Progstr.Log.Internal
             this.Error(FormatException(text, error));
         }
         
-        public void Error(string template, params object[] args)
+        public void ErrorFormat(string template, params object[] args)
         {
             this.Error(FormatObjects(template, args));
         }
@@ -77,7 +77,7 @@ namespace Progstr.Log.Internal
             this.Fatal(FormatException(text, error));
         }
         
-        public void Fatal(string template, params object[] args)
+        public void FatalFormat(string template, params object[] args)
         {
             this.Fatal(FormatObjects(template, args));
         }
