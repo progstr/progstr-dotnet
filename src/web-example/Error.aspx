@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" 
     MasterPageFile="~/WebForms.Master" 
     AutoEventWireup="true" 
-    CodeBehind="RaiseError.aspx.cs" 
-    Inherits="WebExample.RaiseError" %>
+    CodeBehind="Error.aspx.cs" 
+    Inherits="WebExample.Error" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Raise a Test Error
@@ -11,10 +11,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form2" runat="server">
     <div>
-    <p>Trigger a test error:</p>
-    <p><asp:Button runat="server" Text="Throw!" id="errorButton" OnClick="errorButton_Click"></asp:Button></p>
-    </div>
-    <p>Here is the code that we use in Global.asax.cs to catch all exceptions and log them:</p>
+    <h2 style="color: red">A server-side error has occurred. We have logged it will look into it ASAP!</h2>
+    <p>Again, here is the code in Global.asax.cs that makes this work:</p>
 <pre class="brush: c#">
 protected void Application_Error(object sender, EventArgs e)
 {
@@ -26,5 +24,7 @@ protected void Application_Error(object sender, EventArgs e)
     this.Log().Error(message, exception);
 }
 </pre>
+    </div>
+    
     </form>
 </asp:Content>
