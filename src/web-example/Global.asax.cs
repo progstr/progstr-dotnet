@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.IO;
+using Progstr.Log;
 
 namespace WebExample
 {
@@ -29,6 +31,27 @@ namespace WebExample
             AreaRegistration.RegisterAllAreas();
 
             RegisterRoutes(RouteTable.Routes);
+        }
+        
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var url = HttpContext.Current.Request.Url;
+
+            var exception = this.Server.GetLastError();
+
+            var requestBody = this.ReadRequestBody();
+
+            var message = string.Format("Uncaught exception for URL:{0}\r\nREQUEST:\r\n{1}", url, requestBody);
+            this.Log().Error(message, exception);
+        }
+        
+        private string ReadRequestBody()
+        {
+            var requestFile = Path.GetTempFileName();
+            this.Context.Request.SaveAs(requestFile, true);
+            var requestBody = File.ReadAllText(requestFile);
+            File.Delete(requestFile);
+            return requestBody;
         }
     }
 }
