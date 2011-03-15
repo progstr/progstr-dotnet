@@ -36,9 +36,7 @@ namespace WebExample
         protected void Application_Error(object sender, EventArgs e)
         {
             var url = HttpContext.Current.Request.Url;
-
             var exception = this.Server.GetLastError();
-
             var requestBody = this.ReadRequestBody();
 
             var message = string.Format("Uncaught exception for URL:{0}\r\nREQUEST:\r\n{1}", url, requestBody);
