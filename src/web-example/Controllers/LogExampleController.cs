@@ -40,7 +40,7 @@ namespace WebExample.Controllers
                     break;
             }
             
-            ViewData[severity] = true;
+            ViewData[severity ?? "Info"] = true;
             ViewData["Message"] = "Log sent to server.";
             return View("Index");
         }
