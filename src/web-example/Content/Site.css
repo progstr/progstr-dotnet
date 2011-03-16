@@ -109,11 +109,38 @@ page width. Or, you can specify an exact pixel width. */
     font-size: 32px !important;
 }
 
+#sidebar
+{
+    clear: both;
+    
+    margin: 0px;
+    border: 0px;
+    
+    width: 16%;
+    padding: 2%;
+    float: left;
+    min-height: 500px;
+    background-color: #e8eef4;
+}
+
+#sidebar ul
+{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
 #main
 {
-    padding: 30px 30px 15px 30px;
+    margin: 0px;
+    border: 0px;
+    
+    width: 75%;
+    padding: 2%;
+    min-height: 500px;
+    float: right;
+    
     background-color: #fff;
-    margin-bottom: 30px;
     _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
 }
 
@@ -252,7 +279,8 @@ table th
 
 #menucontainer
 {
-    margin-top:40px;
+    margin-top:20px;
+    float: right;
 }
 
 div#title
@@ -260,33 +288,6 @@ div#title
     display:block;
     float:left;
     text-align:left;
-}
-
-#logindisplay
-{
-    font-size:1.1em;
-    display:block;
-    text-align:right;
-    margin:10px;
-    color:White;
-}
-
-#logindisplay a:link
-{
-    color: white;
-    text-decoration: underline;
-}
-
-#logindisplay a:visited
-{
-    color: white;
-    text-decoration: underline;
-}
-
-#logindisplay a:hover
-{
-    color: white;
-    text-decoration: none;
 }
 
 /* Styles for validation helpers
