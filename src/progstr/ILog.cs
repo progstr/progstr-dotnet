@@ -18,7 +18,7 @@ namespace Progstr.Log
         /// <param name="error">An exception that may have occurred and needs to be logged as well.</param>
         void Info(string text, Exception error);
         /// <summary>
-        /// /// Log a message with the Info severity level and format it with one or more objects.
+        /// Log a message with the Info severity level and format it with one or more objects.
         /// </summary>
         /// <param name="template">The format string template. It follows the same rules such as the format strings passed to <see cref="String.Format"/></param>
         /// <param name="args">The objects that need to be formatted.</param>
@@ -35,7 +35,7 @@ namespace Progstr.Log
         /// <param name="error">An exception that may have occurred and needs to be logged as well.</param>
         void Warning(string text, Exception error);
         /// <summary>
-        /// /// Log a message with the Warning severity level and format it with one or more objects.
+        /// Log a message with the Warning severity level and format it with one or more objects.
         /// </summary>
         /// <param name="template">The format string template. It follows the same rules such as the format strings passed to <see cref="String.Format"/></param>
         /// <param name="args">The objects that need to be formatted.</param>
@@ -52,7 +52,7 @@ namespace Progstr.Log
         /// <param name="error">An exception that may have occurred and needs to be logged as well.</param>
         void Error(string text, Exception error);
         /// <summary>
-        /// /// Log a message with the Error severity level and format it with one or more objects.
+        /// Log a message with the Error severity level and format it with one or more objects.
         /// </summary>
         /// <param name="template">The format string template. It follows the same rules such as the format strings passed to <see cref="String.Format"/></param>
         /// <param name="args">The objects that need to be formatted.</param>
@@ -69,7 +69,7 @@ namespace Progstr.Log
         /// <param name="error">An exception that may have occurred and needs to be logged as well.</param>
         void Fatal(string text, Exception error);
         /// <summary>
-        /// /// Log a message with the Fatal severity level and format it with one or more objects.
+        /// Log a message with the Fatal severity level and format it with one or more objects.
         /// </summary>
         /// <param name="template">The format string template. It follows the same rules such as the format strings passed to <see cref="String.Format"/></param>
         /// <param name="args">The objects that need to be formatted.</param>
