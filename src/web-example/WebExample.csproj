@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ControllerErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
@@ -78,6 +79,13 @@
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\PageError.aspx.cs">
+      <DependentUpon>PageError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examples\PageError.aspx.designer.cs">
+      <DependentUpon>PageError.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -101,8 +109,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Error.aspx" />
+    <Content Include="Examples\PageError.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Examples\RaiseError.aspx" />
+    <Content Include="Views\ControllerErrors\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
