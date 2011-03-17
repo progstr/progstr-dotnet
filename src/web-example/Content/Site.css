@@ -144,6 +144,11 @@ page width. Or, you can specify an exact pixel width. */
     _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
 }
 
+.code
+{
+     min-width: 200px;
+}
+
 #footer
 {
     color: #999;

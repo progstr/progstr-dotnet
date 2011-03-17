@@ -13,9 +13,7 @@ namespace WebExample.Controllers
     {
         public ActionResult Index()
         {
-            this.Log().Info("Welcome to the ASP.NET MVC Progstr.Log example.");
-
-            ViewData["Message"] = "Welcome to the ASP.NET MVC Progstr.Log example.";
+            ViewData["Message"] = "MVC severity levels example.";
             return View();
         }
         
