@@ -10,4 +10,5 @@
 <ul>
     <li><a href="/LogExample">Severity levels</a></li>
     <li><a href="/ControllerErrors">Controller errors</a></li>
+    <li><a href="/ControllerActions">Controller actions</a></li>
 </ul>
