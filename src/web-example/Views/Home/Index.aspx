@@ -13,7 +13,7 @@
     troubleshooting problems.
     </p>
     <div id="overview-container">
-        <h2 style="margin: 20px 0px 0px 0px">Example Overview</h2>
+        <h2 style="margin: 20px 0px 0px 0px">Feature Overview</h2>
         <ul id="overview" class="theme-agnostic-lead">
             <li>
                 <h3>Familiar Log API Interface</h3>

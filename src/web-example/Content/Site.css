@@ -111,7 +111,7 @@ page width. Or, you can specify an exact pixel width. */
     width: 16%;
     padding: 2%;
     float: left;
-    min-height: 500px;
+    min-height: 700px;
     background-color: #e8eef4;
 }
 
@@ -129,7 +129,7 @@ page width. Or, you can specify an exact pixel width. */
     
     width: 75%;
     padding: 2%;
-    min-height: 500px;
+    min-height: 700px;
     float: right;
     
     background-color: #fff;
