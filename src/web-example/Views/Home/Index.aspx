@@ -44,5 +44,6 @@
                 <h3>Cross-platform</h3>
                 <p>Apart from fully supporting .NET 3.5 and later, Progstr.Log is being extensively tested under Mono. Any version of Mono greater than 2.6.7 is fully supported.</p>
             </li>
-        </ul>    </div>
+        </ul>
+    </div>
 </asp:Content>
