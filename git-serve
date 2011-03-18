@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-git daemon --reuseaddr --base-path=. --export-all --verbose
+git daemon --reuseaddr --base-path=. --export-all --verbose --port=8080
