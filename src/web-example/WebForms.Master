@@ -14,15 +14,7 @@
 
         <div id="header">
             <div id="title">
-                <h1>Progstr.Log Samples</h1>
-            </div>
-              
-            <div id="menucontainer">
-            
-                <ul id="menu">              
-                    <li><a href="/">Home</a></li>
-                </ul>
-            
+                <h1><a href="/" class="homeLink">Progstr.Log Samples</a></h1>
             </div>
         </div>
 

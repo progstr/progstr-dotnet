@@ -81,6 +81,17 @@ page width. Or, you can specify an exact pixel width. */
     margin-right: auto;
 }
 
+.homeLink
+{
+    color: white;
+    text-decoration: none;
+}
+
+.homeLink:hover
+{
+    text-decoration: underline;
+}
+
 #header
 {
     position: relative;
