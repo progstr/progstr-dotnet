@@ -10,7 +10,7 @@ namespace Progstr.Log.Internal
         {
         }
         
-        private static DateTime epochStart = new DateTime(1970, 1, 1).ToUniversalTime();
+        private static DateTime epochStart = new DateTime(1970, 1, 1);
         
         /// <summary>
         /// Get the current time represented as the number of milliseconds ellapsed since
