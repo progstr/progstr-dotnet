@@ -16,7 +16,7 @@ namespace WebExample
 
         protected void errorButton_Click(object sender, EventArgs e)
         {
-            throw new InvalidOperationException("Test error triggered by the Progstr.Log samples.");
+            throw new InvalidOperationException("Test error triggered by the progstr.log samples.");
         }
     }
 }

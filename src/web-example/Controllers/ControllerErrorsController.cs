@@ -16,7 +16,7 @@ namespace WebExample.Controllers
 
         public ActionResult Throw()
         {
-            throw new InvalidOperationException("Test error triggered by the Progstr.Log samples.");
+            throw new InvalidOperationException("Test error triggered by the progstr.log samples.");
         }
 
         protected override void OnException(ExceptionContext exceptionContext)

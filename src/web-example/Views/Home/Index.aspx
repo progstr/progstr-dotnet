@@ -5,8 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Welcome to the Progstr.Log web examples.</h2>
-    <p>This web application demonstrates how to use the Progstr.Log client library and send log messages to the server. 
+    <h2>Welcome to the <em>progstr.log</em> web examples.</h2>
+    <p>This web application demonstrates how to use the <em>progstr.log</em> client library and send log messages to the server. 
     It contains both examples using ASP.NET MVC and classic WebForms &mdash; click the links to visit a specific example.</p>
     <p>In addition we demonstrate techniques for intercepting interesting events and errors in a typical web 
     application and logging them. That is invaluable for any production deployment - especially when we are 
@@ -42,7 +42,7 @@
             </li>
             <li>
                 <h3>Cross-platform</h3>
-                <p>Apart from fully supporting .NET 3.5 and later, Progstr.Log is being extensively tested under Mono. Any version of Mono greater than 2.6.7 is fully supported.</p>
+                <p>Apart from fully supporting .NET 3.5 and later, <em>progstr.log</em> is being extensively tested under Mono. Any version of Mono greater than 2.6.7 is fully supported.</p>
             </li>
         </ul>
     </div>
