@@ -100,9 +100,9 @@ namespace Progstr.Log.Internal
                 var baseUrl = this.settings["progstr.api.baseurl"] ?? "api.progstr.com";
                 if (baseUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || 
                     baseUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-                    return string.Format("{0}/log", baseUrl);
+                    return string.Format("{0}/v1/log", baseUrl);
                 else
-                    return string.Format("http://{0}/log", baseUrl);
+                    return string.Format("http://{0}/v1/log", baseUrl);
             }
         }
         
