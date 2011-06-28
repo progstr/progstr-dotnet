@@ -316,7 +316,26 @@ table th
 #menucontainer
 {
     margin-top:20px;
-    float: right;
+}
+
+#view_logs
+{
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    text-align: right;
+    margin: 10px;
+    color: white;
+}
+
+#view_logs a
+{
+    text-decoration: none;
+}
+
+#view_logs a:hover
+{
+    text-decoration: underline;
 }
 
 div#title

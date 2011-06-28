@@ -30,8 +30,13 @@
             <div id="title">
                 <h1><a href="/" class="homeLink">progstr.log samples</a></h1>
             </div>
+            <div id="view_logs">
+                <a href="https://app.progstr.com/search?demoAutoLogin=true"
+                    title="Log management area for our demo account."
+                    class="homeLink"
+                    target="_blank">View Logs</a>
+            </div>
         </div>
-
         <div id="sidebar">
         <progstr:Sidebar runat="server" />
         </div>
