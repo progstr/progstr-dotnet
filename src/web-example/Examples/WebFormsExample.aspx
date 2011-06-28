@@ -5,7 +5,7 @@
     Inherits="WebExample.WebFormsExample" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    ASP.NET WebForms Example
+    Logging with different severity levels.
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

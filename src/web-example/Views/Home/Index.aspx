@@ -42,7 +42,7 @@
             </li>
             <li>
                 <h3>Cross-platform</h3>
-                <p>Apart from fully supporting .NET 3.5 and later, <em>progstr.log</em> is being extensively tested under Mono. Any version of Mono greater than 2.6.7 is fully supported.</p>
+                <p>Apart from fully supporting .NET 3.5 and later, <em>progstr.log</em> is being extensively tested on Mono. Any version of Mono greater than 2.6.7 is fully supported.</p>
             </li>
         </ul>
     </div>
