@@ -115,7 +115,9 @@
     <Content Include="Examples\RaiseError.aspx" />
     <Content Include="Views\ControllerErrors\Index.aspx" />
     <Content Include="Views\ControllerActions\Index.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
