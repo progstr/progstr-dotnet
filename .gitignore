@@ -10,3 +10,5 @@ _ReSharper*
 #MonoDevelop
 *.userprefs
 *.pidb
+
+target
