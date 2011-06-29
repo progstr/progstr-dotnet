@@ -13,7 +13,12 @@
     <div>
     <h2><asp:Literal ID="message" runat="server" /></h2>
     <p>Trigger a test error:</p>
-    <p><asp:Button runat="server" Text="Throw!" id="errorButton" OnClick="errorButton_Click"></asp:Button></p>
+    <p>
+        <asp:Button runat="server" Text="Throw!" id="errorButton" OnClick="errorButton_Click"></asp:Button>
+        <a href="https://app.progstr.com/search?demoAutoLogin=true"
+                    title="Log management area for our demo account."
+                    target="_blank">View Logs</a>
+    </p>
     </div>
     <p>ASP.NET pages have an OnError method that you can override and handle all unexpected errors. You can't 
     really affect page rendering at that point since you don't know at what stage of the page lifecycle the 

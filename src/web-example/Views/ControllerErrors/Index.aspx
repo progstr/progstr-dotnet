@@ -8,7 +8,12 @@
     <h2><%= ViewData["Message"] %></h2>
     <% using (Html.BeginForm("Throw", "ControllerErrors")) { %>
     <p>Trigger a test error:</p>
-    <p><input type="submit" value="Throw!" /></p>
+    <p>
+        <input type="submit" value="Throw!" />
+        <a href="https://app.progstr.com/search?demoAutoLogin=true"
+                    title="Log management area for our demo account."
+                    target="_blank">View Logs</a>
+    </p>
     <% } %>
 
     <p>Controllers have an OnException method that you can override and handle all unexpected errors:</p>

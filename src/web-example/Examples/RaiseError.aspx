@@ -12,7 +12,12 @@
     <form id="form2" runat="server">
     <div>
     <p>Trigger a test error:</p>
-    <p><asp:Button runat="server" Text="Throw!" id="errorButton" OnClick="errorButton_Click"></asp:Button></p>
+    <p>
+        <asp:Button runat="server" Text="Throw!" id="errorButton" OnClick="errorButton_Click"></asp:Button>
+        <a href="https://app.progstr.com/search?demoAutoLogin=true"
+                    title="Log management area for our demo account."
+                    target="_blank">View Logs</a>
+    </p>
     </div>
     <p>Here is the code that we use in Global.asax.cs to catch all exceptions and log them:</p>
 <pre class="brush: c#">

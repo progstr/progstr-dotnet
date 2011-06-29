@@ -12,7 +12,7 @@
     <div style="width: 45%; float: left;">
     <form id="form1" runat="server">
     <p>Log message:</p>
-    <p><asp:TextBox runat="server" id="logMessage" TextMode="MultiLine" Width="300px" Height="150px"></asp:TextBox></p>
+    <p><asp:TextBox runat="server" id="logMessage" TextMode="MultiLine" Text="Something interesting just happened..." Width="300px" Height="150px"></asp:TextBox></p>
     <p>Severity:</p>
     <p>
         <asp:RadioButtonList id="severityList" runat="server">
@@ -22,7 +22,12 @@
             <asp:ListItem id="fatal" runat="server" Value="Fatal" />
         </asp:RadioButtonList>
     </p>
-    <p><asp:Button runat="server" Text="Log" id="logButton" OnClick="logButton_Click"></asp:Button></p>
+    <p>
+        <asp:Button runat="server" Text="Log" id="logButton" OnClick="logButton_Click"></asp:Button>
+        <a href="https://app.progstr.com/search?demoAutoLogin=true"
+                    title="Log management area for our demo account."
+                    target="_blank">View Logs</a>
+    </p>
     <p><asp:Label id="messageArea" runat="server" ForeColor="Red"></asp:Label></p>
     </form>
     </div>

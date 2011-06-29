@@ -9,7 +9,7 @@
     <h2><%= ViewData["Message"] %></h2>
     <% using (Html.BeginForm("Log", "LogExample")) { %>
     <p>Log message:</p>
-    <p><%= Html.TextArea("logMessage", new { style = "height:150px;width:300px;" }) %></p>
+    <p><%= Html.TextArea("logMessage","Something interesting just happened...", new { style = "height:150px;width:300px;" }) %></p>
     <p>Severity:</p>
     <p>
         <label><%= Html.RadioButton("severity", "Info", ViewData["Info"]) %>Info</label>
@@ -17,7 +17,12 @@
         <label><%= Html.RadioButton("severity", "Error", ViewData["Error"]) %>Error</label>
         <label><%= Html.RadioButton("severity", "Fatal", ViewData["Fatal"]) %>Fatal</label>
     </p>
-    <p><input type="submit" value="Log" /></p>
+    <p>
+        <input type="submit" value="Log" />
+        <a href="https://app.progstr.com/search?demoAutoLogin=true"
+                    title="Log management area for our demo account."
+                    target="_blank">View Logs</a>
+    </p>
     <% } %>
     </div>
     <div class="code" style="float: right; width: 59%;">
