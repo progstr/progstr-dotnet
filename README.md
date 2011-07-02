@@ -9,10 +9,12 @@ Download the distribution from the **Downloads** area.
 * Sign up for Progstr.Log and obtain an API token. That token is used to identify you against the service. Keep it secret and do not share it with anyone unless you want to let them log messages on your behalf.
 * Download the binary distribution or compile *progstr-dotnet* from source. Copy *Progstr.Log.dll* to your project and add a reference.
 * Configure the API token by adding a "progstr.log.apitoken" entry to the *appSettings* section in your application config file (or the root *web.config* file for your web application):
-    
-      <appSettings>
-          <add key="progstr.log.apitoken" value="6f413b64-a8e1-4e25-b9e6-d83acf26ccba" />
-      </appSettings>
+<pre>
+      &lt;appSettings>
+          &lt;add key="progstr.log.apitoken" value="6f413b64-a8e1-4e25-b9e6-d83acf26ccba" />
+      &lt;/appSettings>
+</pre>
+    Alternatively, you can use the code-based configuration and just set the `LogSettings.ApiToken` static property before logging anything.
 
 #Getting started
 
