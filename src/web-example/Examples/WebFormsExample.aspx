@@ -24,7 +24,7 @@
     </p>
     <p>
         <asp:Button runat="server" Text="Log" id="logButton" OnClick="logButton_Click"></asp:Button>
-        <a href="https://app.progstr.com/search?demoAutoLogin=true"
+        <a href="https://app.progstr.com/demoAutoLogin"
                     title="Log management area for our demo account."
                     target="_blank">View Logs</a>
     </p>

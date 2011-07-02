@@ -9,7 +9,7 @@
     <h2><%= ViewData["Message"] %></h2>
     <p>
         Trigger a new controller action: <input type="submit" value="Deposit some money!" />
-        <a href="https://app.progstr.com/search?demoAutoLogin=true"
+        <a href="https://app.progstr.com/demoAutoLogin"
                     title="Log management area for our demo account."
                     target="_blank">View Logs</a>
     </p>
