@@ -12,7 +12,7 @@ namespace Progstr.Tests
         {
         }
         
-        public TestClient(NameValueCollection settings) : base(settings)
+        public TestClient(NameValueCollection settings) : base(new DefaultSettings(new ConfigFileSettings(settings)))
         {
         }
 

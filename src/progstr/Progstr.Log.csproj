@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Internal\LogEnvironment.cs" />
+    <Compile Include="Internal\ISettings.cs" />
+    <Compile Include="Internal\ConfigFileSettings.cs" />
     <Compile Include="Internal\LogLevel.cs" />
     <Compile Include="Internal\LogMessage.cs" />
     <Compile Include="Internal\LogRequest.cs" />
@@ -68,6 +70,8 @@
     <Compile Include="ILog.cs" />
     <Compile Include="Internal\LogFacade.cs" />
     <Compile Include="Logs.cs" />
+    <Compile Include="Internal\DefaultSettings.cs" />
+    <Compile Include="LogSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -17,18 +17,19 @@ namespace Progstr.Log.Internal
     public class ProgstrClient
     {
         protected string apiToken;
-        protected NameValueCollection settings;
+        private ISettings settings;
 
-        public ProgstrClient() : this(ConfigurationManager.AppSettings)
+        public ProgstrClient() : this(new DefaultSettings(new ConfigFileSettings()))
         {            
         }
         
-        public ProgstrClient(NameValueCollection settings)
+        public ProgstrClient(ISettings settings)
         {
-            this.apiToken = settings["progstr.log.apitoken"];
+            this.settings = settings;
+
+            this.apiToken = this.settings.ApiToken;
             if (string.IsNullOrEmpty(this.apiToken))
                 throw new InvalidOperationException("Bad or missing API token. Make sure the 'progstr.log.apitoken' setting is set.");
-            this.settings = settings;
         }
 
         public virtual void AddHeader(HttpWebRequest request, string name, string value)
@@ -97,7 +98,7 @@ namespace Progstr.Log.Internal
         {
             get
             {
-                var baseUrl = this.settings["progstr.api.baseurl"] ?? "api.progstr.com";
+                var baseUrl = this.settings.BaseUrl;
                 if (baseUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || 
                     baseUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
                     return string.Format("{0}/v1/log", baseUrl);
@@ -110,8 +111,7 @@ namespace Progstr.Log.Internal
         {
             get
             {
-                var stringValue = this.settings["progstr.api.enablecompression"] ?? "true";
-                return Convert.ToBoolean(stringValue);
+                return (bool) this.settings.EnableCompression;
             }
         }
         
