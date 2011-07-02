@@ -17,7 +17,7 @@ namespace Progstr.Tests
         public void ApiBaseUrl()
         {
             var client = new TestClient(this.settings);
-            client.ApiUrl.ShouldBe("http://api.progstr.com/log");
+            client.ApiUrl.ShouldBe("http://api.progstr.com/v1/log");
         }
         
         [Fact]
@@ -25,7 +25,7 @@ namespace Progstr.Tests
         {
             this.settings["progstr.api.baseurl"] = "localhost:9091";
             var client = new TestClient(this.settings);
-            client.ApiUrl.ShouldBe("http://localhost:9091/log");
+            client.ApiUrl.ShouldBe("http://localhost:9091/v1/log");
         }
         
         [Fact]
@@ -33,7 +33,7 @@ namespace Progstr.Tests
         {
             this.settings["progstr.api.baseurl"] = "http://localhost:9091";
             var client = new TestClient(this.settings);
-            client.ApiUrl.ShouldBe("http://localhost:9091/log");
+            client.ApiUrl.ShouldBe("http://localhost:9091/v1/log");
         }
         
         [Fact]
