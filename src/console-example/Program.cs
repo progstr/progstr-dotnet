@@ -9,8 +9,6 @@ namespace ConsoleExample
         {
             LogSettings.ApiToken = "DEMO";
             Logs.Get<Program>().Info("Hello, from a console app");
-            
-            Console.ReadLine();
         }
     }
 }

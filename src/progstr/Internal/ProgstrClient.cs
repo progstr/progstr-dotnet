@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Json;
 using System.Net;
 using System.Diagnostics;
 using System.Configuration;
+using System.Threading;
 
 namespace Progstr.Log.Internal
 {
@@ -124,6 +125,8 @@ namespace Progstr.Log.Internal
 
         public virtual void Send(LogMessage message)
         {
+            Shutdown.StartRequest();
+
             Action asyncAction = () => {
                 this.Execute(message);
             };

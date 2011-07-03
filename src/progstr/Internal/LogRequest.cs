@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Progstr.Log.Internal
 {
@@ -69,6 +70,7 @@ namespace Progstr.Log.Internal
             {
                 this.OnError(statusCode.ToString(), responseBody);
             }
+            Shutdown.EndRequest();
         }
 
         private void OnError(string status, string body)
@@ -77,6 +79,7 @@ namespace Progstr.Log.Internal
             Trace.TraceError("Log HTTP request failed with status: " + status);
             Debug.WriteLine("Response body:\r\n" + body);
             Trace.TraceError("Response body:\r\n" + body);
+            Shutdown.EndRequest();
         }
     }
 }
