@@ -109,6 +109,7 @@ page width. Or, you can specify an exact pixel width. */
     background-color: #e8eef4;
 
     border-radius: 5px;
+    -ms-border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
@@ -135,6 +136,7 @@ page width. Or, you can specify an exact pixel width. */
     _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
 
     border-radius: 5px;
+    -ms-border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
@@ -334,6 +336,10 @@ div#title
 .logo {
     float: left;
     margin: 29px 25px 8px 0;
+}
+
+.logo img {
+    border: 0px;
 }
 
 #menu_wrapper {
