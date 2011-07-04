@@ -28,8 +28,8 @@ namespace Progstr.Log.Internal
 
         private static void OnExit(object sender, EventArgs e)
         {
-            //Give any pending requests a chance to complete.
-            for (var i = 0; i < 10; i++)
+            //Wait 1.5 seconds and give any pending requests a chance to complete.
+            for (var i = 0; i < 15; i++)
             {
                 if (pendingRequests > 0)
                 {
