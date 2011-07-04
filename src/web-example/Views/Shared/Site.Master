@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
 <%@ Register TagPrefix="progstr" TagName="Sidebar" Src="~/Sidebar.ascx" %>
+<%@ Register TagPrefix="progstr" TagName="TopNavigation" Src="~/TopNavigation.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -23,19 +24,8 @@
 </head>
 
 <body>
+    <progstr:TopNavigation runat="server" />
     <div class="page">
-
-        <div id="header">
-            <div id="title">
-                <h1><a href="/" class="homeLink">progstr.log samples</a></h1>
-            </div>
-            <div id="view_logs">
-                <a href="https://app.progstr.com/demoAutoLogin"
-                    title="Log management area for our demo account."
-                    class="homeLink"
-                    target="_blank">View Logs</a>
-            </div>
-        </div>
         <div id="sidebar">
         <progstr:Sidebar runat="server" />
         </div>

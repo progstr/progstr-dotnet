@@ -5,7 +5,10 @@ to use a different color start by replacing all instances of
 ----------------------------------------------------------*/
 body
 {
+    /*
     background-color: #5c87b2;
+    */
+    background-color: #5badd0;
     font-size: .75em;
     font-family: Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -92,26 +95,6 @@ page width. Or, you can specify an exact pixel width. */
     text-decoration: underline;
 }
 
-#header
-{
-    position: relative;
-    margin-bottom: 0px;
-    color: #000;
-    padding: 0;
-}
-
-#header h1
-{
-    font-weight: bold;
-    padding: 5px 0;
-    margin: 0;
-    color: #fff;
-    border: none;
-    line-height: 2em;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 32px !important;
-}
-
 #sidebar
 {
     clear: both;
@@ -192,58 +175,6 @@ page width. Or, you can specify an exact pixel width. */
     font-size: .9em;
 }
 
-/* TAB MENU   
-----------------------------------------------------------*/
-ul#menu
-{
-    border-bottom: 1px #5C87B2 solid;
-    padding: 0 0 2px;
-    position: relative;
-    margin: 0;
-    text-align: right;
-}
-
-ul#menu li
-{
-    display: inline;
-    list-style: none;
-}
-
-ul#menu li#greeting
-{
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    color: #fff;
-}
-
-ul#menu li a
-{
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    background-color: #e8eef4;
-}
-
-ul#menu li a:hover
-{
-    background-color: #fff;
-}
-
-ul#menu li a:active
-{
-    background-color: #a6e2a6;
-    text-decoration: none;
-}
-
-ul#menu li.selected a
-{
-    background-color: #fff;
-    color: #000;
-}
-
 /* FORM LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -313,31 +244,6 @@ table th
     color:Red;
 }
 
-#menucontainer
-{
-    margin-top:20px;
-}
-
-#view_logs
-{
-    font-size: 1.1em;
-    font-weight: bold;
-    display: block;
-    text-align: right;
-    margin: 10px;
-    color: white;
-}
-
-#view_logs a
-{
-    text-decoration: none;
-}
-
-#view_logs a:hover
-{
-    text-decoration: underline;
-}
-
 div#title
 {
     display:block;
@@ -397,4 +303,78 @@ div#title
 .tri-state
 {
     width: 6em;
+}
+
+/* Header styles matching the home page */
+#top_bg {
+    width: 100%;
+    margin: 34px 0px;
+    height: 118px;
+    background: transparent url('/Content/menu_bg.png') repeat-x center center;
+}
+
+#top_bar {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70px;
+    margin: auto;
+}
+
+.logo {
+    float: left;
+    margin: 29px 25px 8px 0;
+}
+
+#menu_wrapper {
+    padding: 0;
+    height: 66px;
+}
+
+#menu_wrapper .nav ul, #menu_wrapper div .nav {
+    list-style: none;
+    display: block;
+    padding: 0 5px 0 0;
+    margin: 0 -7px 0 0;
+    float: right;
+    font-size: 13px;
+    margin-top: 7px;
+    font-weight: bold;
+}
+
+#menu_wrapper .nav ul li, #menu_wrapper div .nav li {
+    display: block;
+    float: left;
+    margin: 0 0 0 0;
+}
+
+#menu_wrapper .nav ul li a, #menu_wrapper div .nav li a {
+    color: #555;
+    text-decoration: none;
+    line-height: 16px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 13px;
+    font-st-topyle: normal;
+    font-variant: normal;
+    font-weight: bold;
+}
+
+#menu_wrapper .nav ul li a, #menu_wrapper div .nav li a {
+    display: block;
+    padding: 32px 20px 8px 20px;
+    height: 61px;
+    margin: 0;
+}
+
+#menu_wrapper .nav ul li a.hover, #menu_wrapper .nav ul li a:hover, #menu_wrapper div .nav li a.hover, #menu_wrapper div .nav li a:hover {
+    background: transparent url('/Content/menu_hover.png') repeat-x top center;
+    color: #444;
+}
+
+#menu_wrapper .nav ul li a span, #menu_wrapper div .nav li a span {
+    display: block;
+    font-size: 11px;
+    color: #96A1A6;
+    font-weight: normal;
+    text-transform: lowercase;
 }
