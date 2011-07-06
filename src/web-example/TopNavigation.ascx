@@ -1,4 +1,15 @@
 <%@ Control Language="C#" %>
+<div id="toptextbox">
+  <div id="toptextboxleft">
+    <b>Free BETA - currently supporting Microsoft .NET and Mono</b>
+  </div>
+
+  <div id="toptextboxright">
+    <b>.NET APPLICATION LOGGING TO THE CLOUD</b>
+    <a href="http://app.progstr.com/login"><b>[ Log in ]</b></a>
+  </div>
+</div>
+
 <div id="top_bg">
     <div id="top_bar">
             <div id="menu_wrapper">

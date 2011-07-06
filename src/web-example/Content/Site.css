@@ -320,7 +320,7 @@ div#title
 /* Header styles matching the home page */
 #top_bg {
     width: 100%;
-    margin: 34px 0px;
+    margin: 0px 0px 34px 0px;
     height: 118px;
     background: transparent url('/Content/menu_bg.png') repeat-x center center;
 }
@@ -393,4 +393,41 @@ div#title
     color: #96A1A6;
     font-weight: normal;
     text-transform: lowercase;
+}
+
+/*white text above top menu*/
+
+#toptextbox {
+    width: 90%;
+    height: 34px; 
+    margin: auto; 
+    color: white; 
+    font-size: 11px;
+}
+
+#toptextboxleft {
+	width: 380px; 
+    float: left; 
+    margin-top: 13px;
+}
+
+#toptextboxright {
+	width: 380px; 
+    float: right; 
+    text-align: right; 
+    margin-top: 13px;
+}
+
+#toptextboxright a {
+	margin-left:30px;
+    color:white;
+    text-decoration: none;
+}
+
+#toptextboxright a:hover {
+    text-decoration: underline;
+}
+
+#toptextboxright b {
+	color:white;
 }
