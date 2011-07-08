@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.IO;
 using Progstr.Log;
+using System.Text.RegularExpressions;
 
 namespace WebExample
 {
@@ -32,15 +33,28 @@ namespace WebExample
 
             RegisterRoutes(RouteTable.Routes);
         }
-        
+
         protected void Application_Error(object sender, EventArgs e)
         {
             var url = HttpContext.Current.Request.Url;
             var exception = this.Server.GetLastError();
-            var requestBody = this.ReadRequestBody();
+            if (!this.IgnoreError(exception))
+            {
+                var requestBody = this.ReadRequestBody();
 
-            var message = string.Format("Uncaught exception for URL:{0}\r\nREQUEST:\r\n{1}", url, requestBody);
-            this.Log().Error(message, exception);
+                var message = string.Format("Uncaught exception for URL:{0}\r\nREQUEST:\r\n{1}", url, requestBody);
+                this.Log().Error(message, exception);
+            }
+        }
+
+        /// <summary>
+        /// Ignore 404 errors that the ASP.NET MVC controller factory "helpfully"
+        /// turns into "Controller not found" errors.
+        /// </summary>
+        private bool IgnoreError(Exception error)
+        {
+            var message = error.Message;
+            return Regex.IsMatch(message, "The controller for path.*was not found");
         }
         
         private string ReadRequestBody()
